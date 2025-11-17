@@ -1,0 +1,6 @@
+.vscode/
+.env
+.prod.env
+.secrets
+bin/
+.zed/
