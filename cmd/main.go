@@ -4,6 +4,7 @@ import (
 	"context"
 	"log"
 
+	"github.com/kiriyms/dungeon-master-mcp/resources"
 	"github.com/kiriyms/dungeon-master-mcp/tools"
 	"github.com/modelcontextprotocol/go-sdk/mcp"
 )
@@ -23,8 +24,13 @@ func main() {
 	tools.RegisterCombatTools(server)
 	log.Println("Registered Tools: combat management, damage calculation, legendary actions")
 
+	// Register all SRD resources
+	// These provide monster stat blocks, damage rules, condition definitions, etc.
+	resources.RegisterCombatResources(server)
+	log.Println("Registered Resources: monster stats, SRD rules, condition definitions")
+
 	log.Println("D&D Combat MCP Server starting...")
-	
+
 	// Run the server over stdin/stdout for Claude integration
 	// This allows the MCP client (like Claude Desktop) to communicate with the server
 	if err := server.Run(context.Background(), &mcp.StdioTransport{}); err != nil {
