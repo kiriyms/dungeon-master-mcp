@@ -492,3 +492,8 @@ func loadMonsterStats(entity *Entity) {
 		entity.LegendaryResistances = 3
 	}
 }
+
+// GetCombatState returns the current combat state pointer.
+func GetCombatState() *CombatState {
+	return combatState
+}
