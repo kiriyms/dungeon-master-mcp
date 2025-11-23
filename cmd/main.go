@@ -4,6 +4,7 @@ import (
 	"context"
 	"log"
 
+	"github.com/kiriyms/dungeon-master-mcp/prompts"
 	"github.com/kiriyms/dungeon-master-mcp/resources"
 	"github.com/kiriyms/dungeon-master-mcp/tools"
 	"github.com/modelcontextprotocol/go-sdk/mcp"
@@ -28,6 +29,11 @@ func main() {
 	// These provide monster stat blocks, damage rules, condition definitions, etc.
 	resources.RegisterCombatResources(server)
 	log.Println("Registered Resources: monster stats, SRD rules, condition definitions")
+
+	// Register all DM assistance prompts
+	// These guide the DM through complex combat scenarios
+	prompts.RegisterCombatPrompts(server)
+	log.Println("Registered Prompts: tactical recommendations, save resolution, turn management")
 
 	log.Println("D&D Combat MCP Server starting...")
 
